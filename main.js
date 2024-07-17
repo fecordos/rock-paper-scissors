@@ -1,11 +1,48 @@
 "use strict";
 
 (function () {
-  const buttons = document.querySelectorAll("[data-choice-button]");
+  const choiceButtons = document.querySelectorAll("[data-choice-button]");
+  const gameModeButtons = document.querySelectorAll("[data-game-mode-button]");
   const outputText = document.querySelector("[data-output-text]");
 
-  for (const button of buttons) {
-    button.addEventListener("click", handleClick);
+  let playerScore = 0;
+  let computerScore = 0;
+
+  const normalChoices = ["rock", "paper", "scissors"];
+  const lizardSpockChoices = ["rock", "paper", "scissors", "lizard", "spock"];
+  let currentChoices = normalChoices;
+
+  const outcomes = {
+    Rock: {
+      winsAgainst: { Scissors: "crushes", Lizard: "crushes" },
+      losesTo: { Paper: "covers", Spock: "vaporizes" },
+    },
+    Paper: {
+      winsAgainst: { Rock: "covers", Spock: "disproves" },
+      losesTo: { Scissors: "cuts", Lizard: "eats" },
+    },
+    Scissors: {
+      winsAgainst: { Paper: "cuts", Lizard: "decapitates" },
+      losesTo: { Rock: "crushes", Spock: "smashes" },
+    },
+    Lizard: {
+      winsAgainst: { Paper: "eats", Spock: "poisons" },
+      losesTo: { Rock: "crushes", Scissors: "decapitates" },
+    },
+    Spock: {
+      winsAgainst: { Scissors: "smashes", Rock: "vaporizes" },
+      losesTo: { Paper: "disproves", Lizard: "poisons" },
+    },
+  };
+
+  displayGameScore(playerScore, computerScore);
+
+  for (const choiceButton of choiceButtons) {
+    choiceButton.addEventListener("click", handleClick);
+  }
+
+  for (const gameModeButton of gameModeButtons) {
+    gameModeButton.addEventListener("click", handleGameMode);
   }
 
   function handleClick(e) {
@@ -18,64 +55,84 @@
     displayOutput(output);
   }
 
+  function handleGameMode(e) {
+    const gameMode = e.target.dataset.gameModeButton;
+    const lizardButton = choiceButtons[3];
+    const spockButton = choiceButtons[4];
+
+    if (gameMode === "normal") {
+      lizardButton.classList.add("hidden");
+      spockButton.classList.add("hidden");
+      currentChoices = normalChoices;
+      changeColorOfGMButton(gameMode);
+
+    } else if ((gameMode === "lizard-spock")) {
+      lizardButton.classList.remove("hidden");
+      spockButton.classList.remove("hidden");
+      currentChoices = lizardSpockChoices;
+      changeColorOfGMButton(gameMode);
+    }
+  }
+
+  function changeColorOfGMButton(gameMode){
+    const normalButton = gameModeButtons[0];
+    const lizardSpockButton = gameModeButtons[1];
+
+    if(gameMode === 'normal'){
+      normalButton.classList.add("selected");
+      lizardSpockButton.classList.remove("selected");
+    } else if( gameMode === 'lizard-spock'){
+      lizardSpockButton.classList.add("selected");
+      normalButton.classList.remove("selected");
+    }
+  }
+
   function getComputerChoice() {
-    const choices = ["rock", "paper", "scissors", "lizard", "spock"];
-    return choices[Math.floor(Math.random() * choices.length)];
+    return currentChoices[Math.floor(Math.random() * currentChoices.length)];
   }
 
   function decideTheWinner(userChoice, computerChoice) {
-    switch (userChoice) {
-      case "rock":
-        switch (computerChoice) {
-          case "rock":
-            return drawMessage(computerChoice);
-          case "paper":
-            return loseMessage(userChoice, computerChoice);
-          case "scissors":
-            return winMessage(userChoice, computerChoice);
-        }
-        break;
-      case "paper":
-        switch (computerChoice) {
-          case "rock":
-            return winMessage(userChoice, computerChoice);
-          case "paper":
-            return drawMessage(computerChoice);
-          case "scissors":
-            return loseMessage(userChoice, computerChoice);
-        }
-        break;
-      case "scissors":
-        switch (computerChoice) {
-          case "rock":
-            return loseMessage(userChoice, computerChoice);
-          case "paper":
-            return winMessage(userChoice, computerChoice);
-          case "scissors":
-            return drawMessage(computerChoice);
-        }
-        break;
+    let resultMessage = `You chose: ${userChoice}. Computer chose: ${computerChoice}. `;
+
+    if (userChoice === computerChoice) {
+      resultMessage += "It's a tie!";
+    } else if (
+      outcomes[capitalizeFirstLetter(userChoice)].winsAgainst[
+        capitalizeFirstLetter(computerChoice)
+      ]
+    ) {
+      resultMessage += `You win! ${capitalizeFirstLetter(userChoice)} ${
+        outcomes[capitalizeFirstLetter(userChoice)].winsAgainst[
+          capitalizeFirstLetter(computerChoice)
+        ]
+      } ${computerChoice}.`;
+      playerScore++;
+    } else {
+      resultMessage += `You lose! ${capitalizeFirstLetter(computerChoice)} ${
+        outcomes[capitalizeFirstLetter(computerChoice)].winsAgainst[
+          capitalizeFirstLetter(userChoice)
+        ]
+      }.`;
+      computerScore++;
     }
+
+    displayGameScore(playerScore, computerScore);
+    return resultMessage;
   }
 
   function displayOutput(output) {
     outputText.textContent = output;
   }
 
+  function displayGameScore(playerScore, computerScore) {
+    const playerOutputScore = document.querySelector("[data-output-game-score='player']");
+    const computerOutputScore = document.querySelector("[data-output-game-score='computer']");
+
+    playerOutputScore.textContent = playerScore;
+    computerOutputScore.textContent = computerScore;
+  }
+
   function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
-
-  function winMessage(userChoice, computerChoice){
-    return `Congratulations, you won! ${capitalizeFirstLetter(userChoice)} beats ${computerChoice}!`;
-  }
-
-  function loseMessage(userChoice, computerChoice){
-    return `Sorry, the computer won. ${capitalizeFirstLetter(computerChoice)} beats ${userChoice}!`;
-  }
-
-  function drawMessage(choice){
-    return `It's a draw! You both chose ${choice}.`;
-  }
-
 })();

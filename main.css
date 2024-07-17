@@ -13,10 +13,34 @@
 }
 
 h1 {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 3rem;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   padding: 2rem;
+  text-align: center;
+}
+
+.game-mode {
+  padding: 2rem;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+[data-game-mode-button] {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+
+  height: 2.2rem;
+  width: 8rem;
+
+  margin: 0.2rem;
+  cursor: pointer;
 }
 
 [data-choice-button] {
@@ -35,4 +59,21 @@ h1 {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 1.1rem;
   margin: 0.5rem;
+  text-align: center;
+}
+
+.game-score {
+  text-align: center;
+  padding: 2rem;
+}
+
+.selected {
+  color: aliceblue;
+  background-color: green;
+}
+
+.hidden {
+  display: none !important;
+  border: 5px solid red;
+  font-size: 5rem;
 }
