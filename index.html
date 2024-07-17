@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors Lizard Spock</title>
     <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Monoton&family=Righteous&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css"
     />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
     <script src="main.js" defer></script>
   </head>
   <body>
     <main class="main">
-      <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
+      <h1>Rock Paper Scissors Lizard Spock</h1>
       <div class="game-mode">
         <h2>Game Mode</h2>
         <div>
@@ -21,30 +25,28 @@
           <button data-game-mode-button="lizard-spock">Lizard-Spock</button>
         </div>
       </div>
-      <div class="buttons">
-        <button class="far fa-hand-rock" data-choice-button="rock"> Rock</button>
-        <button class="far fa-hand-paper" data-choice-button="paper">
-          Paper
-        </button>
-        <button class="far fa-hand-scissors" data-choice-button="scissors">
-          Scissors
-        </button>
-        <button class="far fa-hand-lizard" data-choice-button="lizard">
-          Lizard
-        </button>
-        <button class="far fa-hand-spock" data-choice-button="spock">
-          Spock
-        </button>
-      </div>
-      <output data-output-text for="rock paper scissors lizard spock"
-        >Choose an item</output
-      >
       <div class="game-score">
         <h2>Game Score</h2>
         <div>
           Player: <output data-output-game-score="player"></output> | Computer:
           <output data-output-game-score="computer"></output>
         </div>
+      </div>
+      <output data-output-text for="rock paper scissors lizard spock"
+        >Choose an item:</output
+      >
+      <div class="buttons">
+        <button class="far fa-hand-rock" data-choice-button="rock"> Rock</button>
+        <button class="far fa-hand-paper" data-choice-button="paper">
+          Paper
+        </button>
+        <button class="far fa-hand-scissors" data-choice-button="scissors"> Scissors</button>
+        <button class="far fa-hand-lizard" data-choice-button="lizard">
+          Lizard
+        </button>
+        <button class="far fa-hand-spock" data-choice-button="spock">
+          Spock
+        </button>
       </div>
     </main>
   </body>
