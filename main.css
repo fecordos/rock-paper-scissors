@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 3rem;
+  letter-spacing: .1em;
+  padding: 2rem;
+}
+
+[data-choice-button] {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  height: 2.2rem;
+  width: 6rem;
+
+  margin: 0.2rem;
+  cursor: pointer;
+}
+
+[data-output-text] {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.1rem;
+  margin: 0.5rem;
+}
