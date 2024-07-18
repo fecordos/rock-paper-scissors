@@ -1,5 +1,5 @@
 # Rock Paper Scissors Lizard Spock
-
+## Project
 <div align="left">
 	<code><img width="50" src="https://user-images.githubusercontent.com/25181517/192158954-f88b5814-d510-4564-b285-dff7d6400dad.png" alt="HTML" title="HTML"/></code>
 	<code><img width="50" src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png" alt="CSS" title="CSS"/></code>
@@ -7,6 +7,7 @@
 </div> 
 <br/>
 
+## Functionality:
 <ul>
  <li>
    The user can choose the game mode: </li> <br/>
@@ -25,6 +26,7 @@
 ![image](https://github.com/user-attachments/assets/fe0eef0d-9067-4a12-8d57-010666fe3d17)
    </li>
   <li>The game score in real time: <br />
+	  
 ![image](https://github.com/user-attachments/assets/a3e92b93-c351-419b-91db-b52879d682f5)
  </li>
 </ul>
