@@ -11,8 +11,10 @@
 <ul>
  <li>
    The user can choose the game mode: <br/>
+	 
    ## Normal mode: <br />
-	 ![image](https://github.com/user-attachments/assets/977cfc7e-2503-4246-9d11-778ce704da0b)
+	 ![image](https://github.com/user-attachments/assets/977cfc7e-2503-4246-9d11-778ce704da0b) <br />
+	 
   ## Lizard-Spock mode: <br />
 	 ![image](https://github.com/user-attachments/assets/e1a0b9fc-8fd4-4f7f-b927-c91df065c4d9)
  </li>
