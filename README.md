@@ -7,8 +7,6 @@
 </div> 
 <br/>
 
-![image](https://github.com/user-attachments/assets/90624e04-7d38-42d6-bf3e-47c89c00144a)
-
 <ul>
  <li>
    The user can choose the game mode: </li> <br/>
@@ -22,13 +20,13 @@
   <li>
     The user can choose an item using a button.  <br />
     The computer chooses one at random.
- </li>
+
 ![image](https://github.com/user-attachments/assets/5a892286-f749-4521-a165-c96d8784d440) <br/>
 ![image](https://github.com/user-attachments/assets/fe0eef0d-9067-4a12-8d57-010666fe3d17)
-  
-  <li>The game score in real time:</li>
+   </li>
+  <li>The game score in real time: <br />
 ![image](https://github.com/user-attachments/assets/a3e92b93-c351-419b-91db-b52879d682f5)
- 
+ </li>
 </ul>
 
 ## Responsive Design: <br />
